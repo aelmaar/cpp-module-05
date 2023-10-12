@@ -6,7 +6,7 @@
 /*   By: ael-maar <ael-maar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 11:47:17 by ael-maar          #+#    #+#             */
-/*   Updated: 2023/10/11 13:40:29 by ael-maar         ###   ########.fr       */
+/*   Updated: 2023/10/12 18:56:22 by ael-maar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ std::ostream &operator<< (std::ostream &cout, Bureaucrat const &obj) {
     return (cout);
 }
 
-void    Bureaucrat::signForm(Form const &form) {
+void    Bureaucrat::signForm(AForm const &form) {
     if (form.getIsSigned())
     {
         std::cout << "The bureaucrat " << this->getName() << " signed " << form.getName() << std::endl;

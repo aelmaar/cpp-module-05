@@ -6,7 +6,7 @@
 /*   By: ael-maar <ael-maar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 16:26:23 by ael-maar          #+#    #+#             */
-/*   Updated: 2023/10/12 16:58:02 by ael-maar         ###   ########.fr       */
+/*   Updated: 2023/10/12 19:32:26 by ael-maar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define SHRUBBERYCREATIONFORM_HPP
 
 # include "AForm.hpp"
+# include <fstream>
 
 class ShrubberyCreationForm: public AForm
 {
@@ -24,6 +25,14 @@ class ShrubberyCreationForm: public AForm
         ShrubberyCreationForm &operator=(ShrubberyCreationForm const &other);
         ~ShrubberyCreationForm();
         void execute(Bureaucrat const & executor) const;
+        class FilePermissionDenied;
+};
+
+class ShrubberyCreationForm::FilePermissionDenied: public std::exception {
+    std::string const &file;
+    public:
+        FilePermissionDenied(std::string const &file);
+        const char *what() const throw();
 };
 
 #endif

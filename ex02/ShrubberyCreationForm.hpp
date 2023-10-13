@@ -6,7 +6,7 @@
 /*   By: ael-maar <ael-maar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 16:26:23 by ael-maar          #+#    #+#             */
-/*   Updated: 2023/10/12 19:32:26 by ael-maar         ###   ########.fr       */
+/*   Updated: 2023/10/13 17:51:16 by ael-maar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,7 @@ class ShrubberyCreationForm: public AForm
 };
 
 class ShrubberyCreationForm::FilePermissionDenied: public std::exception {
-    std::string const &file;
     public:
-        FilePermissionDenied(std::string const &file);
         const char *what() const throw();
 };
 

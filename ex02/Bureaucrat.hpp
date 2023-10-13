@@ -6,7 +6,7 @@
 /*   By: ael-maar <ael-maar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 11:47:14 by ael-maar          #+#    #+#             */
-/*   Updated: 2023/10/12 16:23:35 by ael-maar         ###   ########.fr       */
+/*   Updated: 2023/10/13 15:54:04 by ael-maar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include <iostream>
 # include "AForm.hpp"
+
+class AForm;
 
 class Bureaucrat
 {
@@ -33,6 +35,7 @@ class Bureaucrat
         void    IncrementGrade();
         void    DecrementGrade();
         void    signForm(AForm const &form);
+        void    executeForm(AForm const &form);
 };
 
 std::ostream &operator<< (std::ostream &out, Bureaucrat const &obj);

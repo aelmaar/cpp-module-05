@@ -6,7 +6,7 @@
 /*   By: ael-maar <ael-maar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 11:47:17 by ael-maar          #+#    #+#             */
-/*   Updated: 2023/10/12 18:56:22 by ael-maar         ###   ########.fr       */
+/*   Updated: 2023/10/13 16:54:32 by ael-maar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,5 +67,18 @@ void    Bureaucrat::signForm(AForm const &form) {
         return;
     }
     std::cout << "The bureaucrat " << this->getName() << " couldn't sign " << form.getName();
-    std::cout << " because the bureaucrat's grade is lower then the form's grade" << std::endl;
+    std::cout << " because " << (!form.getIsSigned() ? "the form is not signed":"") << std::endl;
+}
+
+void    Bureaucrat::executeForm(AForm const &form) {
+    try
+    {
+        form.execute(*this);
+        std::cout << this->getName() << " executed " << form.getName() << std::endl;
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << this->getName() << " can't execute " << form.getName() << " because ";
+        std::cerr << e.what() << '\n';
+    }
 }

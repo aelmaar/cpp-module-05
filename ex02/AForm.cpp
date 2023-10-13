@@ -6,7 +6,7 @@
 /*   By: ael-maar <ael-maar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 10:43:35 by ael-maar          #+#    #+#             */
-/*   Updated: 2023/10/12 17:09:20 by ael-maar         ###   ########.fr       */
+/*   Updated: 2023/10/13 16:15:51 by ael-maar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,17 @@ AForm &AForm::operator=(AForm const &other) {
 
 AForm::~AForm() {}
 
+const char *AForm::GradeTooHighException::what() const throw() { return "Grade is too high"; }
+
+const char *AForm::GradeTooLowException::what() const throw() { return "Grade is too low"; }
+
 std::string const &AForm::getName() const { return (name); }
 
-bool const AForm::getIsSigned() const { return (is_signed); }
+bool AForm::getIsSigned() const { return (is_signed); }
 
-int const AForm::getGradeSign() const { return (grade_sign); }
+int AForm::getGradeSign() const { return (grade_sign); }
 
-int const AForm::getGradeExec() const { return (grade_exec); }
+int AForm::getGradeExec() const { return (grade_exec); }
 
 void AForm::beSigned(Bureaucrat const &bureaucrat) {
     if (bureaucrat.getRange() > grade_sign)
@@ -49,6 +53,6 @@ void AForm::beSigned(Bureaucrat const &bureaucrat) {
 std::ostream &operator<< (std::ostream &cout, AForm const &obj) {
     cout << obj.getName();
     cout << " with grade sign: " << obj.getGradeSign() << ", grade execution: " << obj.getGradeExec();
-    cout << " and " << obj.getIsSigned() ? "is signed":"is not signed";
+    cout << " and " << (obj.getIsSigned() ? "is signed":"is not signed");
     return (cout);
 }

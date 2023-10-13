@@ -6,7 +6,7 @@
 /*   By: ael-maar <ael-maar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 11:47:14 by ael-maar          #+#    #+#             */
-/*   Updated: 2023/10/11 13:21:25 by ael-maar         ###   ########.fr       */
+/*   Updated: 2023/10/13 15:10:11 by ael-maar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include <iostream>
 # include "Form.hpp"
+
+class Form;
 
 class Bureaucrat
 {

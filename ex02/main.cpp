@@ -6,7 +6,7 @@
 /*   By: ael-maar <ael-maar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 11:47:49 by ael-maar          #+#    #+#             */
-/*   Updated: 2023/10/14 12:47:15 by ael-maar         ###   ########.fr       */
+/*   Updated: 2023/10/14 14:05:34 by ael-maar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,20 @@ int main(void)
         std::cerr << e.what() << '\n';
     }
     std::cout << "-----Test2-----" << std::endl;
+    try
+    {
+        Bureaucrat bureaucrat("Anouar", 136);
+        AForm *shrubbery = new ShrubberyCreationForm("Home");
+
+        bureaucrat.executeForm(*shrubbery);
+
+        delete shrubbery;
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+    std::cout << "-----Test3-----" << std::endl;
     try
     {
         Bureaucrat bureaucrat("Anouar", 4);

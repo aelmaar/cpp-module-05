@@ -6,7 +6,7 @@
 /*   By: ael-maar <ael-maar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 16:26:21 by ael-maar          #+#    #+#             */
-/*   Updated: 2023/10/14 13:33:38 by ael-maar         ###   ########.fr       */
+/*   Updated: 2023/10/14 14:01:10 by ael-maar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,10 @@ ShrubberyCreationForm::~ShrubberyCreationForm() {}
 void ShrubberyCreationForm::execute(Bureaucrat const & executor) const {
     std::fstream ascii_tree;
 
-    if (!this->getIsSigned() || executor.getRange() > this->getGradeExec())
+    if (executor.getRange() > this->getGradeExec())
         throw ShrubberyCreationForm::GradeTooLowException();
+    else if (!this->getIsSigned())
+        throw ShrubberyCreationForm::NotSignedException();
     ascii_tree.open(this->getName()+"_shrubbery", std::fstream::out | std::fstream::trunc | std::fstream::in);
     try
     {
@@ -44,21 +46,29 @@ void ShrubberyCreationForm::execute(Bureaucrat const & executor) const {
         throw;
     }
     
-    ascii_tree << "        _-_\n";
-    ascii_tree << "       /   \\\n";
-    ascii_tree << "      /     \\\n";
-    ascii_tree << "     /       \\\n";
-    ascii_tree << "    /         \\\n";
-    ascii_tree << "   /           \\\n";
-    ascii_tree << "   |   o   o   |\n";
-    ascii_tree << "   |     |     |\n";
-    ascii_tree << "   |    \\_/    |\n";
-    ascii_tree << "   |   --|--   |\n";
-    ascii_tree << "    \\         /\n";
-    ascii_tree << "     \\       /\n";
-    ascii_tree << "      \\     /\n";
-    ascii_tree << "       \\   /\n";
-    ascii_tree << "        \\_/\n";
+    // write an ascii tree in the file
+    ascii_tree << "       _-_" << std::endl;
+    ascii_tree << "    /~~   ~~\\" << std::endl;
+    ascii_tree << " /~~         ~~\\" << std::endl;
+    ascii_tree << "{               }" << std::endl;
+    ascii_tree << " \\  _-     -_  /" << std::endl;
+    ascii_tree << "   ~  \\\\ //  ~" << std::endl;
+    ascii_tree << "_- -   | | _- _" << std::endl;
+    ascii_tree << "  _ -  | |   -_" << std::endl;
+    ascii_tree << "      // \\\\" << std::endl;
+    ascii_tree << "     //   \\\\" << std::endl;
+    ascii_tree << "    //     \\\\" << std::endl;
+    ascii_tree << "   //       \\\\" << std::endl;
+    ascii_tree << "  //         \\\\" << std::endl;
+    ascii_tree << " //           \\\\" << std::endl;
+    ascii_tree << "//             \\\\" << std::endl;
+    ascii_tree << "||             ||" << std::endl;
+    ascii_tree << "||             ||" << std::endl;
+    ascii_tree << "||             ||" << std::endl;
+    ascii_tree << "||             ||" << std::endl;
+    ascii_tree << "||_____________||" << std::endl;
+    ascii_tree << "|_______________|" << std::endl;
+    ascii_tree << " \\_____________/" << std::endl;
     ascii_tree.close();
 }
 

@@ -6,7 +6,7 @@
 /*   By: ael-maar <ael-maar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 10:43:32 by ael-maar          #+#    #+#             */
-/*   Updated: 2023/10/13 16:42:11 by ael-maar         ###   ########.fr       */
+/*   Updated: 2023/10/14 13:57:08 by ael-maar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ class AForm
         virtual ~AForm();
         class GradeTooHighException;
         class GradeTooLowException;
+        class NotSignedException;
         std::string const &getName() const;
         bool getIsSigned() const;
         int getGradeSign() const;
@@ -48,6 +49,11 @@ class AForm::GradeTooHighException: public std::exception{
 };
 
 class AForm::GradeTooLowException: public std::exception{
+    public:
+        const char *what() const throw();
+};
+
+class AForm::NotSignedException: public std::exception{
     public:
         const char *what() const throw();
 };

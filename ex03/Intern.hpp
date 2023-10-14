@@ -6,7 +6,7 @@
 /*   By: ael-maar <ael-maar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 10:42:32 by ael-maar          #+#    #+#             */
-/*   Updated: 2023/10/14 11:56:31 by ael-maar         ###   ########.fr       */
+/*   Updated: 2023/10/14 12:54:07 by ael-maar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@
 class Intern
 {
     typedef AForm* (Intern::*createForm)(std::string const &);
-    const char *forms[3];
-    createForm createform[3];
+    const char *forms[FORMS];
+    createForm createform[FORMS];
     public:
         Intern();
         Intern(Intern const &old_obj);

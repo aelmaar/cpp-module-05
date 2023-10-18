@@ -6,7 +6,7 @@
 /*   By: ael-maar <ael-maar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 16:26:16 by ael-maar          #+#    #+#             */
-/*   Updated: 2023/10/13 17:00:10 by ael-maar         ###   ########.fr       */
+/*   Updated: 2023/10/18 13:44:53 by ael-maar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,13 @@ RobotomyRequestForm &RobotomyRequestForm::operator=(RobotomyRequestForm const &o
 RobotomyRequestForm::~RobotomyRequestForm() {}
 
 void RobotomyRequestForm::execute(Bureaucrat const & executor) const {
-    if (!this->getIsSigned() || executor.getRange() > this->getGradeExec())
-    {
-        std::cout << "Robotomy failed" << std::endl;
+    if (executor.getRange() > this->getGradeExec())
         throw RobotomyRequestForm::GradeTooLowException();
-    }
-    std::cout << this->getName() << " has been robotomized successfully 50%% of the time" << std::endl;
+    if (!this->getIsSigned())
+        throw RobotomyRequestForm::NotSignedException();
+    std::srand(time(NULL));
+    if (std::rand() % 2)
+        std::cout << this->getName() << " has been robotomized successfully 50%% of the time" << std::endl;
+    else
+        std::cout << "Robotomy failed" << std::endl;
 }

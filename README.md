@@ -1,4 +1,4 @@
-# Cpp module 05
+# Cpp module 05 - Exceptions
 
 ## Overview
 

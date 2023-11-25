@@ -27,10 +27,15 @@ RobotomyRequestForm &RobotomyRequestForm::operator=(RobotomyRequestForm const &o
 RobotomyRequestForm::~RobotomyRequestForm() {}
 
 void RobotomyRequestForm::execute(Bureaucrat const & executor) const {
-    if (!this->getIsSigned() || executor.getRange() > this->getGradeExec())
-    {
-        std::cout << "Robotomy failed" << std::endl;
+    if (executor.getRange() > this->getGradeExec())
         throw RobotomyRequestForm::GradeTooLowException();
-    }
-    std::cout << this->getName() << " has been robotomized successfully 50%% of the time" << std::endl;
+    if (!this->getIsSigned())
+        throw RobotomyRequestForm::NotSignedException();
+    std::srand(std::time(NULL));
+    int random = rand() % 2;
+    std::cout << "random" << random << std::endl;
+    if (random % 2)
+        std::cout << this->getName() << " has been robotomized successfully 50%% of the time" << std::endl;
+    else
+        std::cout << "Robotomy failed" << std::endl;
 }
